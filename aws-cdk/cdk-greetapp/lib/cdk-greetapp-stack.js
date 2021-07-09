@@ -1,5 +1,6 @@
 const cdk = require("@aws-cdk/core");
 const lambda = require("@aws-cdk/aws-lambda");
+const gateway = require("@aws-cdk/aws-apigateway");
 
 class CdkGreetappStack extends cdk.Stack {
   /**
@@ -16,6 +17,29 @@ class CdkGreetappStack extends cdk.Stack {
       code: lambda.Code.fromAsset("lambda"),
       handler: "greet.handler",
     });
+
+    // defines an AWS API Gateway resource With Proxy
+    const apiGatewayWithProxy = new gateway.LambdaRestApi(
+      this,
+      "greetApiWithProxy",
+      {
+        handler: greet,
+      }
+    );
+
+    // defines an AWS API Gateway resource Without Proxy
+    const apiGatewayWithoutProxy = new gateway.LambdaRestApi(
+      this,
+      "greetApiWithoutProxy",
+      {
+        handler: greet,
+        proxy: false,
+      }
+    );
+
+    const greetResources = apiGatewayWithoutProxy.root.addResource("greet");
+    const greetResource = greetResources.addResource("{name}");
+    greetResource.addMethod("GET");
   }
 }
 
