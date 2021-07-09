@@ -1,0 +1,21 @@
+{
+  "name": "cdk-greetapp",
+  "version": "0.1.0",
+  "bin": {
+    "cdk-greetapp": "bin/cdk-greetapp.js"
+  },
+  "scripts": {
+    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
+    "cdk": "cdk",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.111.0",
+    "aws-cdk": "1.111.0",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-lambda": "^1.111.0",
+    "@aws-cdk/core": "1.111.0"
+  }
+}
