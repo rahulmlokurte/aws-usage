@@ -1,0 +1,24 @@
+{
+  "name": "cdk-step",
+  "version": "0.1.0",
+  "bin": {
+    "cdk-step": "bin/cdk-step.js"
+  },
+  "scripts": {
+    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
+    "cdk": "cdk",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.111.0",
+    "aws-cdk": "1.111.0",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-iam": "^1.113.0",
+    "@aws-cdk/aws-lambda": "^1.113.0",
+    "@aws-cdk/aws-stepfunctions": "^1.113.0",
+    "@aws-cdk/aws-stepfunctions-tasks": "^1.113.0",
+    "@aws-cdk/core": "1.111.0"
+  }
+}
