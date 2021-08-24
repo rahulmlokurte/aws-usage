@@ -1,0 +1,22 @@
+{
+  "name": "cdk-apigateway",
+  "version": "0.1.0",
+  "bin": {
+    "cdk-apigateway": "bin/cdk-apigateway.js"
+  },
+  "scripts": {
+    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
+    "cdk": "cdk",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.116.0",
+    "aws-cdk": "1.116.0",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.119.0",
+    "@aws-cdk/aws-lambda": "^1.119.0",
+    "@aws-cdk/core": "1.116.0"
+  }
+}
