@@ -50,7 +50,6 @@ class CdkApigatewayStack extends cdk.Stack {
     const items = greetApi.root.addResource("greet");
     const users = greetApi.root.addResource("user");
     items.addMethod("GET", greetApiIntegration, {
-      authorizationType: apigateway.AuthorizationType.IAM,
       requestParameters: {
         "method.request.querystring.greetName": true,
       },
