@@ -29,3 +29,8 @@ variable "ingress_egress_cidr_blocks" {
   type = string
   default = "0.0.0.0/0"
 }
+
+variable "stage_name" {
+  type = string
+  default = "v1"
+}

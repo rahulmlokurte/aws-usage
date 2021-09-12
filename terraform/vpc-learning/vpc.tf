@@ -54,3 +54,11 @@ resource "aws_security_group" "vpc-learning-security-group" {
     cidr_blocks = [var.ingress_egress_cidr_blocks]
   }
 }
+
+resource "aws_vpc_endpoint" "api-gateway-vpc-learning-endpoint-service" {
+  service_name = data.aws_vpc_endpoint_service.api-gateway-vpc-learning-endpoint-service.service_name
+  vpc_id = aws_vpc.vpc-learning.id
+  vpc_endpoint_type = "Interface"
+  subnet_ids = [aws_subnet.vpc-learning-public-subnet-1.id]
+  security_group_ids = [aws_security_group.vpc-learning-security-group.id]
+}
