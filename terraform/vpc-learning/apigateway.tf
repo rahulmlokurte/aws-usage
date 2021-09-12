@@ -6,7 +6,34 @@ resource "aws_api_gateway_rest_api" "api-gateway-vpc-learning" {
     vpc_endpoint_ids = [
       aws_vpc_endpoint.api-gateway-vpc-learning-endpoint-service.id ]
   }
-  policy = data.template_file.role_policy.rendered
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "*"
+            ],
+            "Condition" : {
+                "StringNotEquals": {
+                    "aws:SourceVpce": "${aws_vpc_endpoint.api-gateway-vpc-learning-endpoint-service.id}"
+                }
+            }
+        }
+    ]
+}
+EOF
 }
 
 resource "aws_api_gateway_resource" "api-gateway-vpc-learning-resources" {
@@ -35,6 +62,12 @@ resource "aws_api_gateway_deployment" "api-gateway-vpc-learning-deployment" {
  lifecycle {
 create_before_destroy = true
  }
+
+  depends_on = [
+  aws_api_gateway_rest_api.api-gateway-vpc-learning,
+  aws_api_gateway_resource.api-gateway-vpc-learning-resources,
+  aws_api_gateway_method.api-gateway-vpc-learning-method,
+  aws_api_gateway_integration.api-gateway-vpc-learning-integration]
 }
 
 resource "aws_api_gateway_stage" "api-gateway-vpc-learning-stage" {
