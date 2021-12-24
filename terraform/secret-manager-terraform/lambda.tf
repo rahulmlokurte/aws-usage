@@ -9,7 +9,7 @@ module "profile_generator_lambda" {
   source_path   = "${path.module}/resources/profile-generator-lambda"
   layers        = [module.profile_generator_lambda_layer.lambda_layer_arn]
   environment_variables = {
-    "mongoURI"       = data.aws_secretsmanager_secret_version.secret_credentials.secret_string
+    "mongoURI" = data.aws_secretsmanager_secret_version.secret_credentials.secret_string
   }
 
   tags = {

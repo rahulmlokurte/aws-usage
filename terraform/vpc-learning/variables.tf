@@ -26,11 +26,11 @@ variable "tags" {
 
 variable "ingress_egress_cidr_blocks" {
   description = "It is used to assign the cidr blocks"
-  type = string
-  default = "0.0.0.0/0"
+  type        = string
+  default     = "0.0.0.0/0"
 }
 
 variable "stage_name" {
-  type = string
+  type    = string
   default = "v1"
 }

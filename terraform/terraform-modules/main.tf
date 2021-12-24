@@ -18,7 +18,7 @@ provider "aws" {
 }
 
 module "lambdas" {
-  source = "./modules/lambda"
+  source                       = "./modules/lambda"
   aws_lambda_function_role_arn = module.roles.lambda_role_arn
 }
 

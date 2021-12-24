@@ -1,5 +1,5 @@
 data "aws_secretsmanager_secret" "secret_name" {
-   name = "mongodbURI"
+  name = "mongodbURI"
 }
 
 data "aws_secretsmanager_secret_version" "secret_credentials" {

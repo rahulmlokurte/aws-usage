@@ -26,6 +26,6 @@ variable "tags" {
 
 variable "repository_name" {
   description = "An codecommit Repository Name"
-  type = string
-  default = "cicd-demo"
+  type        = string
+  default     = "cicd-demo"
 }
